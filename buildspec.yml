@@ -1,17 +1,15 @@
 version: 0.2
 
 phases:
-  install:
-    commands:
-      - echo "No dependencies to install for static HTML project."
   build:
     commands:
-      - echo "Building static site..."
+      - echo "Starting static site build..."
       - mkdir -p output
-      - cp -r * output/
+      - cp -r index.html output/
   post_build:
     commands:
-      - echo "Build completed on `date`"
+      - echo "Build completed on `date`."
+      - ls -al output
 
 artifacts:
   files:
