@@ -2,24 +2,18 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      dotnet: 8.0
     commands:
-      - echo Installing dependencies...
-      - dotnet restore
-
+      - echo "No dependencies to install for static HTML project."
   build:
     commands:
-      - echo Building the application...
-      - dotnet build --configuration Release
-      - dotnet test --no-build --verbosity normal
-
+      - echo "Building static site..."
+      - mkdir -p output
+      - cp -r * output/
   post_build:
     commands:
-      - echo Publishing build artifacts...
-      - dotnet publish src/MyApp -c Release -o ./publish
+      - echo "Build completed on `date`"
 
 artifacts:
   files:
     - '**/*'
-  base-directory: publish
+  base-directory: output
